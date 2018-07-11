@@ -8,8 +8,7 @@
 
 namespace App\Controller\Rest;
 
-
-use App\Entity\User;
+use App\Repository\UserRepository;
 use FOS\RestBundle\Controller\FOSRestController;
 use FOS\RestBundle\View\View;
 use FOS\RestBundle\Controller\Annotations as Rest;
@@ -20,23 +19,26 @@ class UserApiController extends FOSRestController
 
     /**
      * Retrieves an User resource
-     * @Rest\Get("/users}")
+     * @Rest\Get("/users")
+     * @param UserRepository $repository
+     * @return View
      */
-    public function index()
+    public function index(UserRepository $repository)
     {
-        $repository = $this->getDoctrine()->getRepository(User::class);
         $users = $repository->findall();
-        return View::create($users, Response::HTTP_OK, []);
+        return View::create($users, Response::HTTP_OK);
     }
 
     /**
      * Retrieves an User resource
      * @Rest\Get("/users/{userId}")
+     * @param UserRepository $repository
+     * @param int $userId
+     * @return View
      */
-    public function getArticle(int $userId)
+    public function getArticle(UserRepository $repository, int $userId)
     {
-        $repository = $this->getDoctrine()->getRepository(User::class);
         $users = $repository->findall();
-        return View::create($users, Response::HTTP_OK, []);
+        return View::create($users, Response::HTTP_OK);
     }
 }
