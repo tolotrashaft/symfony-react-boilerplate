@@ -19,22 +19,69 @@ class User
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $name;
+    private $firstName;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $lastName;
+
+    /**
+     * @ORM\Column(type="integer", length=255)
+     */
+    private $age;
 
     public function getId()
     {
         return $this->id;
     }
 
-    public function getName(): ?string
+    /**
+     * @return mixed
+     */
+    public function getFirstName()
     {
-        return $this->name;
+        return $this->firstName;
     }
 
-    public function setName(string $name): self
+    /**
+     * @param mixed $firstName
+     */
+    public function setFirstName($firstName): void
     {
-        $this->name = $name;
-
-        return $this;
+        $this->firstName = $firstName;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getLastName()
+    {
+        return $this->lastName;
+    }
+
+    /**
+     * @param mixed $lastName
+     */
+    public function setLastName($lastName): void
+    {
+        $this->lastName = $lastName;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAge()
+    {
+        return $this->age;
+    }
+
+    /**
+     * @param mixed $age
+     */
+    public function setAge($age): void
+    {
+        $this->age = $age;
+    }
+
 }
