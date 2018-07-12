@@ -38,7 +38,7 @@ class UserApiController extends FOSRestController
      */
     public function getArticle(UserRepository $repository, int $userId)
     {
-        $users = $repository->findall();
+        $users = $repository->find($userId);
         return View::create($users, Response::HTTP_OK);
     }
 }
