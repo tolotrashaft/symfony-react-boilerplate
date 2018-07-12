@@ -8,23 +8,18 @@
 
 namespace App\Controller\Web;
 
-use Symfony\Component\HttpFoundation\Response;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\Routing\Annotation\Route;
-use Twig\Environment;
 
 class AppController
 {
     /**
      * @Route("/")
-     *
-     * @param Environment $environment
-     * @return Response
-     * @throws \Twig_Error_Loader
-     * @throws \Twig_Error_Runtime
-     * @throws \Twig_Error_Syntax
+     * @Template("pages/welcome.html.twig")
+     * @return array
      */
-    function index(Environment $environment)
+    function index()
     {
-        return new Response($environment->render('pages/welcome.html.twig'));
+        return array('posts' => ['name' => 'tolotra']);
     }
 }

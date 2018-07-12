@@ -2,6 +2,7 @@
 
 namespace App\Controller\Web;
 
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
@@ -9,11 +10,10 @@ class UsersController extends Controller
 {
     /**
      * @Route("/users", name="users")
+     * @Template("users/index.html.twig")
      */
     public function index()
     {
-        return $this->render('users/index.html.twig', [
-            'controller_name' => 'UsersController',
-        ]);
+        return ['controller_name' => 'UsersController'];
     }
 }
