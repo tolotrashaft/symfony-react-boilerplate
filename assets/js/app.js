@@ -1,49 +1,25 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { NavLink, Route, StaticRouter, Switch } from 'react-router-dom';
+import routes from './routes';
 import ReactDOM from 'react-dom';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
-import ItemCard from './components/ItemCard';
-
-class App extends React.Component {
-  constructor() {
-    super();
-
-    this.state = {
-      entries: []
-    };
-  }
-
-  componentDidMount() {
-    fetch('/api/articles')
-      .then(response => response.json())
-      .then(entries => {
-        this.setState({
-          entries
-        });
-      });
-  }
-
+class App extends Component {
   render() {
     return (
-      <MuiThemeProvider>
-        <div style={{ display: 'flex' }}>
-          {this.state.entries.map(
-            ({ id, author, avatarUrl, title, description }) => (
-              <ItemCard
-                key={id}
-                author={author}
-                title={title}
-                avatarUrl={avatarUrl}
-                style={{ flex: 1, margin: 10 }}
-              >
-                {description}
-              </ItemCard>
-            )
-          )}
+      <div>
+        <div>
+          <NavLink to={'/news'}>News</NavLink>
         </div>
-      </MuiThemeProvider>
+        <Switch>
+          {routes.map((route, i) => <Route key={i} {...route} />)}
+        </Switch>
+      </div>
     );
   }
 }
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render((
+  <StaticRouter location={window.location.pathname} context={{}}>
+    <App/>
+  </StaticRouter>
+), document.getElementById('root'));

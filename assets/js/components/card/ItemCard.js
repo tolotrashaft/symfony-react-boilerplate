@@ -8,4 +8,5 @@ const ItemCard = ({ author, avatarUrl, title, subtitle, style, children }) => (
     <CardText>{children}</CardText>
   </Card>
 );
+
 export default ItemCard

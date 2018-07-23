@@ -15,7 +15,8 @@ class AppController
 {
     /**
      * @Route("/")
-     * @Template("Default/index.html.twig")
+     * @Route("/{slug}")
+     * @Template("default/index.html.twig")
      * @return array
      */
     function index()
