@@ -15,11 +15,11 @@ class AppController
 {
     /**
      * @Route("/")
-     * @Template("pages/welcome.html.twig")
+     * @Template("Default/index.html.twig")
      * @return array
      */
     function index()
     {
-        return array('posts' => ['name' => 'tolotra']);
+        return [];
     }
 }
